@@ -79,7 +79,7 @@ export default function FdfInputsPage() {
 
     try {
       const response = await fetch(
-        "https://applied-salmonlike-stephen.ngrok-free.dev",
+        "https://applied-salmonlike-stephen.ngrok-free.dev/submit",
         {
           method: "POST",
           headers: {
