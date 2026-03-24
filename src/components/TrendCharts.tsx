@@ -1,3 +1,5 @@
+// src/components/TrendCharts.tsx
+
 "use client";
 
 import {

@@ -4,4 +4,4 @@ export default function HomePage() {
         {/* <h1>Welcome to the Home Page</h1> */}
       </div>
   )
-}
+} 
