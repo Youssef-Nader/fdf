@@ -1,26 +1,283 @@
-@import "tailwindcss";
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #050b12;
+  --panelTop: #071627;
+  --panelBottom: #050b12;
+
+  --ink: #e6edf6;
+  --muted: #a9b6c6;
+
+  --cyan: rgb(34, 211, 238);
+  --cyanSoft: rgba(34, 211, 238, 0.15);
+  --cyanBorder: rgba(34, 211, 238, 0.35);
+  --cardBorder: rgba(34, 211, 238, 0.10);
+  --cardBg: #061425;
+  --inputBg: #071b2f;
+  --inputBorder: rgba(34, 211, 238, 0.20);
+
+  --danger: #fb7185;
+  --success: #6ee7b7;
+
+  --radiusLg: 28px;
+  --radiusMd: 18px;
+  --radiusSm: 14px;
+
+  --shadowGlow: 0 0 40px rgba(34, 211, 238, 0.15);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* { box-sizing: border-box; }
+
+.fdf-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.fdf-container {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.fdf-panel {
+  border-radius: var(--radiusLg);
+  border: 1px solid var(--cyanBorder);
+  box-shadow: var(--shadowGlow);
+  background: linear-gradient(to bottom, var(--panelTop), var(--panelBottom));
+  padding: 28px;
+}
+
+.fdf-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.fdf-title {
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+
+.fdf-subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.fdf-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(34, 211, 238, 0.10);
+  border: 1px solid rgba(34, 211, 238, 0.30);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 160ms ease;
+}
+.fdf-back:hover { background: rgba(34, 211, 238, 0.14); }
+
+.fdf-form {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.fdf-sectionTitle {
+  font-size: 16px;
+  font-weight: 650;
+  margin: 0 0 10px 0;
+  color: #dbe7f7;
+}
+
+.fdf-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  background: var(--cardBg);
+  border: 1px solid var(--cardBorder);
+  border-radius: var(--radiusMd);
+}
+
+.fdf-label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.fdf-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fdf-prefix, .fdf-suffix {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.fdf-input,
+.fdf-select {
+  width: 180px;
+  padding: 10px 12px;
+  border-radius: var(--radiusSm);
+  background: var(--inputBg);
+  border: 1px solid var(--inputBorder);
+  color: var(--ink);
+  outline: none;
+  text-align: right;
+}
+.fdf-select {
+  width: 100%;
+  text-align: left;
+}
+.fdf-input:focus,
+.fdf-select:focus {
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+  border-color: rgba(34, 211, 238, 0.35);
+}
+
+.fdf-noteBox {
+  padding: 14px;
+  border-radius: 18px;
+  background: #061425;
+  border: 1px solid rgba(34, 211, 238, 0.10);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.fdf-inlineStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.fdf-inlineStats b { color: var(--ink); }
+
+.fdf-submit {
+  width: 100%;
+  padding: 16px 14px;
+  border-radius: 20px;
+  background: rgba(34, 211, 238, 0.15);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 160ms ease;
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.18);
+}
+.fdf-submit:hover { background: rgba(34, 211, 238, 0.20); }
+
+.fdf-footerHint {
+  text-align: center;
+  font-size: 11px;
+  color: #7c8aa0;
+  margin-top: 10px;
+}
+
+/* Results layout */
+.kpi-grid {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 820px) {
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.kpi-card {
+  background: var(--cardBg);
+  border: 1px solid var(--cardBorder);
+  border-radius: var(--radiusMd);
+  padding: 16px;
+}
+
+.kpi-title {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+.kpi-value {
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.kpi-delta {
+  margin-top: 10px;
+  font-size: 13px;
+}
+.kpi-delta.positive { color: var(--success); }
+.kpi-delta.negative { color: var(--danger); }
+
+.block {
+  margin-top: 16px;
+  background: var(--cardBg);
+  border: 1px solid var(--cardBorder);
+  border-radius: var(--radiusMd);
+  padding: 16px;
+}
+
+.blockTop {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media (min-width: 820px) {
+  .blockTop {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.incentiveTitle {
+  font-size: 18px;
+  font-weight: 700;
 }
+.incentiveTitle span { color: rgba(34, 211, 238, 0.9); }
+
+.progressTrack {
+  margin-top: 12px;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(34, 211, 238, 0.10);
+  border: 1px solid rgba(34, 211, 238, 0.15);
+}
+.progressFill {
+  height: 100%;
+  background: rgba(34, 211, 238, 0.40);
+  width: 0%;
+}
+
+.progressMeta {
+  margin-top: 8px;
+  text-align: right;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.chartBox {
+  margin-top: 10px;
+  height: 320px;
+}
+
+
+
+
+
